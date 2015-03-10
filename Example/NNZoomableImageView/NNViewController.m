@@ -11,12 +11,23 @@
 
 @implementation NNViewController{
 	__weak IBOutlet NNZoomableImageView* _zoomable_iv;
+	__weak IBOutlet UITapGestureRecognizer* _tap_gr;
+	__weak IBOutlet UIView* _ui_view;
 }
 
 - (void)viewDidLoad{
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	_zoomable_iv.image = [UIImage imageNamed:@"wallabi.jpg"];
+	
+	[_tap_gr requireGestureRecognizerToFail:_zoomable_iv.doubleTapGestureRecognizer];
+}
+
+
+-(IBAction)onImageTap:(id)sender{
+	BOOL hidden = !_ui_view.hidden;
+	
+	_ui_view.hidden = hidden;
 }
 
 

@@ -20,22 +20,45 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQC-Zk-YhQ" customClass="NNZoomableImageView">
                                 <rect key="frame" x="10" y="10" width="300" height="548"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="YIy-Fr-PlT" appends="YES" id="Ybe-ig-jVz"/>
+                                </connections>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qfw-hp-FCH">
+                                <rect key="frame" x="0.0" y="502" width="320" height="66"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.48999999999999999" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="naq-Ru-ke1"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="vQC-Zk-YhQ" secondAttribute="bottom" constant="10" id="7WV-EU-nZi"/>
+                            <constraint firstAttribute="trailing" secondItem="qfw-hp-FCH" secondAttribute="trailing" id="4HL-oC-7ap"/>
                             <constraint firstAttribute="trailing" secondItem="vQC-Zk-YhQ" secondAttribute="trailing" constant="10" id="I8K-l5-bnY"/>
+                            <constraint firstAttribute="bottom" secondItem="vQC-Zk-YhQ" secondAttribute="bottom" constant="10" id="YUE-oV-rRF"/>
+                            <constraint firstItem="qfw-hp-FCH" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="dVA-jx-4kq"/>
                             <constraint firstItem="vQC-Zk-YhQ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="10" id="fHf-0h-4RK"/>
                             <constraint firstItem="vQC-Zk-YhQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="10" id="k2P-HC-iBz"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qfw-hp-FCH" secondAttribute="bottom" id="ubu-1u-3Ib"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="O1y-Ql-dsa"/>
                     <connections>
+                        <outlet property="_tap_gr" destination="YIy-Fr-PlT" id="fPJ-Ap-f6Q"/>
+                        <outlet property="_ui_view" destination="qfw-hp-FCH" id="6p5-Li-nOw"/>
                         <outlet property="_zoomable_iv" destination="vQC-Zk-YhQ" id="KwE-Ed-4ac"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YIy-Fr-PlT">
+                    <connections>
+                        <action selector="onImageTap:" destination="vXZ-lx-hvc" id="RaL-JQ-yaL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="713" y="523"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
