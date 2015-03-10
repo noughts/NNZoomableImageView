@@ -29,10 +29,7 @@
 	_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 568/2 - 320/2, 320, 320)];
 	_imageView.backgroundColor = [UIColor blackColor];
 	[self addSubview:_imageView];
-	
-	_doubleTap_gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onDoubleTap:)];
-	_doubleTap_gr.numberOfTapsRequired = 2;
-	[self addGestureRecognizer:_doubleTap_gr];
+	[self addGestureRecognizer:self.doubleTapGestureRecognizer];
 }
 
 
@@ -46,6 +43,10 @@
 #pragma mark - public method
 
 -(UITapGestureRecognizer*)doubleTapGestureRecognizer{
+	if( !_doubleTap_gr ){
+		_doubleTap_gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onDoubleTap:)];
+		_doubleTap_gr.numberOfTapsRequired = 2;
+	}
 	return _doubleTap_gr;
 }
 
