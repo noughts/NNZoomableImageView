@@ -12,6 +12,8 @@
 
 @property(nonatomic) UIImage* image;
 -(UIImageView*)imageView;
+-(UITapGestureRecognizer*)doubleTapGestureRecognizer;
+
 
 /// 表示をリセット。表示がおかしくなった時に呼びましょう
 -(void)resetLayout;

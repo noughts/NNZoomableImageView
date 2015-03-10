@@ -13,6 +13,7 @@
 @implementation NNZoomableImageView{
 	UIImageView* _imageView;
 	BOOL _rotating;
+	UITapGestureRecognizer* _doubleTap_gr;
 }
 
 
@@ -29,9 +30,9 @@
 	_imageView.backgroundColor = [UIColor blackColor];
 	[self addSubview:_imageView];
 	
-	UITapGestureRecognizer* tap_gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onDoubleTap:)];
-	tap_gr.numberOfTapsRequired = 2;
-	[self addGestureRecognizer:tap_gr];
+	_doubleTap_gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onDoubleTap:)];
+	_doubleTap_gr.numberOfTapsRequired = 2;
+	[self addGestureRecognizer:_doubleTap_gr];
 }
 
 
@@ -43,6 +44,10 @@
 }
 
 #pragma mark - public method
+
+-(UITapGestureRecognizer*)doubleTapGestureRecognizer{
+	return _doubleTap_gr;
+}
 
 /// 表示をリセット。表示がおかしくなった時に呼びましょう
 -(void)resetLayout{
