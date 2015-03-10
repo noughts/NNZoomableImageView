@@ -7,23 +7,17 @@
 //
 
 #import "NNViewController.h"
+#import <NNZoomableImageView.h>
 
-@interface NNViewController ()
+@implementation NNViewController{
+	__weak IBOutlet NNZoomableImageView* _zoomable_iv;
+}
 
-@end
-
-@implementation NNViewController
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+	_zoomable_iv.image = [UIImage imageNamed:@"wallabi.jpg"];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

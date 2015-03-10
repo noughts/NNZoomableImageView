@@ -10,12 +10,9 @@
 Pod::Spec.new do |s|
   s.name             = "NNZoomableImageView"
   s.version          = "0.1.0"
-  s.summary          = "A short description of NNZoomableImageView."
+  s.summary          = "hoge"
   s.description      = <<-DESC
-                       An optional longer description of NNZoomableImageView
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       fuga
                        DESC
   s.homepage         = "https://github.com/<GITHUB_USERNAME>/NNZoomableImageView"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
@@ -34,5 +31,5 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency "Masonry"
 end
