@@ -30,7 +30,6 @@
 
 
 -(void)layoutSubviews{
-	NBULogVerbose(@"layoutSubviews");
 	[super layoutSubviews];
 	if( _rotating ){
 		[self _updateImageViewSize];
@@ -39,11 +38,9 @@
 }
 
 -(void)willRotate{
-	NBULogVerbose(@"willRotate");
 	_rotating = YES;
 }
 -(void)didRotate{
-	NBULogVerbose(@"didRotate");
 	_rotating = NO;
 }
 
@@ -83,7 +80,7 @@
 	
 	// Set image view frame
 	_imageView.frame = rect;
-	NBULogInfo(@"%@", NSStringFromCGRect(rect));
+	self.zoomScale = 1;
 }
 
 - (void)_updateImageViewOrigin{
@@ -104,7 +101,6 @@
 	
 	// Set image view frame
 	_imageView.frame = rect;
-		NBULogInfo(@"%@", NSStringFromCGRect(rect));
 }
 
 
