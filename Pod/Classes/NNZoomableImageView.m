@@ -34,8 +34,7 @@
 -(void)layoutSubviews{
 	[super layoutSubviews];
 	if( _rotating ){
-		[self _updateImageViewSize];
-		[self _updateImageViewOrigin];
+		[self resetLayout];
 	}
 }
 
@@ -61,6 +60,10 @@
 -(void)setImage:(UIImage *)image{
 	_image = image;
 	_imageView.image = image;
+
+	/// レイアウトリセット setNeedsLayout と layoutIfNeeded を連続で呼ぶことでlayoutSubViewsが即座に呼ばれ、AutoLayoutでself.frameが更新されます
+	[self setNeedsLayout];
+	[self layoutIfNeeded];
 	[self resetLayout];
 }
 
