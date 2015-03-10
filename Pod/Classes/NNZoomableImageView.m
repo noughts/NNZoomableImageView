@@ -22,6 +22,8 @@
 	self.delegate = self;
 	self.minimumZoomScale = 1;
 	self.maximumZoomScale = 5;
+	self.showsHorizontalScrollIndicator = NO;
+	self.showsVerticalScrollIndicator = NO;
 	
 	_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 568/2 - 320/2, 320, 320)];
 	_imageView.backgroundColor = [UIColor blackColor];
@@ -81,6 +83,9 @@
 
 
 - (void)_updateImageViewSize{
+	if( !_image ){
+		return;
+	}
 	// Get image size
 	CGSize  imageSize = _imageView.image.size;
 	
@@ -102,6 +107,9 @@
 }
 
 - (void)_updateImageViewOrigin{
+	if( !_image ){
+		return;
+	}
 	// Get image view frame
 	CGRect  rect = _imageView.frame;
 	
