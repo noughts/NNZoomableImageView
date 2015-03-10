@@ -41,6 +41,12 @@
 
 #pragma mark - public method
 
+/// 表示をリセット。表示がおかしくなった時に呼びましょう
+-(void)resetLayout{
+	[self _updateImageViewSize];
+	[self _updateImageViewOrigin];
+}
+
 -(UIImageView*)imageView{
 	return _imageView;
 }
@@ -55,8 +61,7 @@
 -(void)setImage:(UIImage *)image{
 	_image = image;
 	_imageView.image = image;
-	[self _updateImageViewSize];
-	[self _updateImageViewOrigin];
+	[self resetLayout];
 }
 
 

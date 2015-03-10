@@ -13,6 +13,9 @@
 @property(nonatomic) UIImage* image;
 -(UIImageView*)imageView;
 
+/// 表示をリセット。表示がおかしくなった時に呼びましょう
+-(void)resetLayout;
+
 /// 画面が回転するときに呼んでください。
 -(void)willRotate;
 
