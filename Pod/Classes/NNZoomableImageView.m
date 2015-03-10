@@ -7,26 +7,44 @@
 //
 
 #import "NNZoomableImageView.h"
-#import <Masonry.h>
-
+#import <NBULog.h>
+#import <FBKVOController.h>
 
 @implementation NNZoomableImageView{
 	UIImageView* _imageView;
+	BOOL _rotating;
 }
 
 
 -(void)awakeFromNib{
 	[super awakeFromNib];
+
 	self.delegate = self;
 	self.minimumZoomScale = 1;
-	self.maximumZoomScale = 3;
+	self.maximumZoomScale = 5;
 	
 	_imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 568/2 - 320/2, 320, 320)];
+	_imageView.backgroundColor = [UIColor blackColor];
 	[self addSubview:_imageView];
 }
 
--(void)setFrame:(CGRect)frame{
-	[super setFrame:frame];
+
+-(void)layoutSubviews{
+	NBULogVerbose(@"layoutSubviews");
+	[super layoutSubviews];
+	if( _rotating ){
+		[self _updateImageViewSize];
+		[self _updateImageViewOrigin];
+	}
+}
+
+-(void)willRotate{
+	NBULogVerbose(@"willRotate");
+	_rotating = YES;
+}
+-(void)didRotate{
+	NBULogVerbose(@"didRotate");
+	_rotating = NO;
 }
 
 
@@ -49,36 +67,31 @@
 
 - (void)_updateImageViewSize{
 	// Get image size
-	CGSize  imageSize;
-	imageSize = _imageView.image.size;
+	CGSize  imageSize = _imageView.image.size;
 	
 	// Decide image view size
-	CGRect  bounds;
+	CGRect  bounds = self.bounds;
 	CGRect  rect;
-	bounds = self.bounds;
 	rect.origin = CGPointZero;
 	if (imageSize.width / imageSize.height > CGRectGetWidth(bounds) / CGRectGetHeight(bounds)) {
 		rect.size.width = CGRectGetWidth(bounds);
 		rect.size.height = floor(imageSize.height / imageSize.width * CGRectGetWidth(rect));
-	}
-	else {
+	} else {
 		rect.size.height = CGRectGetHeight(bounds);
 		rect.size.width = imageSize.width / imageSize.height * CGRectGetHeight(rect);
 	}
 	
 	// Set image view frame
 	_imageView.frame = rect;
+	NBULogInfo(@"%@", NSStringFromCGRect(rect));
 }
 
-- (void)_updateImageViewOrigin
-{
+- (void)_updateImageViewOrigin{
 	// Get image view frame
-	CGRect  rect;
-	rect = _imageView.frame;
+	CGRect  rect = _imageView.frame;
 	
 	// Get scroll view bounds
-	CGRect  bounds;
-	bounds = self.bounds;
+	CGRect  bounds = self.bounds;
 	
 	// Compare image size and bounds
 	rect.origin = CGPointZero;
@@ -91,6 +104,7 @@
 	
 	// Set image view frame
 	_imageView.frame = rect;
+		NBULogInfo(@"%@", NSStringFromCGRect(rect));
 }
 
 

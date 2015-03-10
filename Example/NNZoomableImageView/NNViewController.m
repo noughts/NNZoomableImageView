@@ -20,4 +20,13 @@
 }
 
 
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+	[_zoomable_iv willRotate];
+}
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+	[_zoomable_iv didRotate];
+}
+
+
 @end

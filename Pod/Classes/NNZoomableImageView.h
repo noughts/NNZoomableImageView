@@ -12,4 +12,7 @@
 
 @property(nonatomic) UIImage* image;
 
+-(void)willRotate;
+-(void)didRotate;
+
 @end
