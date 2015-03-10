@@ -37,12 +37,33 @@
 	}
 }
 
+#pragma mark - public method
+
+-(UIImageView*)imageView{
+	return _imageView;
+}
+
 -(void)willRotate{
 	_rotating = YES;
 }
 -(void)didRotate{
 	_rotating = NO;
 }
+
+-(void)setImage:(UIImage *)image{
+	_image = image;
+	_imageView.image = image;
+	[self _updateImageViewSize];
+	[self _updateImageViewOrigin];
+}
+
+
+
+
+
+
+
+#pragma mark - UIScrollViewDelegate
 
 
 -(UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView{
@@ -54,12 +75,9 @@
 }
 
 
--(void)setImage:(UIImage *)image{
-	_image = image;
-	_imageView.image = image;
-	[self _updateImageViewSize];
-	[self _updateImageViewOrigin];
-}
+
+
+#pragma mark - その他
 
 
 - (void)_updateImageViewSize{
