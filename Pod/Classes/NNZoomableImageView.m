@@ -69,10 +69,14 @@
 	_image = image;
 	_imageView.image = image;
 	
-	/// レイアウトリセット setNeedsLayout と layoutIfNeeded を連続で呼ぶことでlayoutSubViewsが即座に呼ばれ、AutoLayoutでself.frameが更新されます
-	[self setNeedsLayout];
-	[self layoutIfNeeded];
-	[self resetLayout];
+	if( image ){
+		/// レイアウトリセット setNeedsLayout と layoutIfNeeded を連続で呼ぶことでlayoutSubViewsが即座に呼ばれ、AutoLayoutでself.frameが更新されます
+		[self setNeedsLayout];
+		[self layoutIfNeeded];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self resetLayout];// ここを明示的にメインスレッドで実装しないと、iOS7以下で正常に動作しない場合があります
+		});
+	}
 }
 
 
