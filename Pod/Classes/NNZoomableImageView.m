@@ -1,10 +1,8 @@
-//
-//  NNZoomableImageView.m
-//  Pods
-//
-//  Created by noughts on 2015/03/10.
-//
-//
+/*
+ 
+ http://hmdt.jp/blog/?p=194 をさんこうにしました
+ 
+ */
 
 #import "NNZoomableImageView.h"
 #import <NBULog.h>
@@ -19,7 +17,7 @@
 
 -(void)awakeFromNib{
 	[super awakeFromNib];
-
+	
 	self.delegate = self;
 	self.minimumZoomScale = 1;
 	self.maximumZoomScale = 3;
@@ -70,7 +68,7 @@
 -(void)setImage:(UIImage *)image{
 	_image = image;
 	_imageView.image = image;
-
+	
 	/// レイアウトリセット setNeedsLayout と layoutIfNeeded を連続で呼ぶことでlayoutSubViewsが即座に呼ばれ、AutoLayoutでself.frameが更新されます
 	[self setNeedsLayout];
 	[self layoutIfNeeded];
@@ -108,9 +106,10 @@
 }
 
 
-- (void)_updateImageViewSize{
+/// 画像が画面にAspectFitするrectを返す
+-(CGRect)imageAspectFitRect{
 	if( !_image ){
-		return;
+		return CGRectZero;
 	}
 	// Get image size
 	CGSize  imageSize = _imageView.image.size;
@@ -126,11 +125,16 @@
 		rect.size.height = CGRectGetHeight(bounds);
 		rect.size.width = imageSize.width / imageSize.height * CGRectGetHeight(rect);
 	}
-	
-	// Set image view frame
-	_imageView.frame = rect;
-	self.zoomScale = 1;
+	return rect;
 }
+
+
+
+- (void)_updateImageViewSize{
+	self.zoomScale = 1;/// 先にzoomScaleをリセットしてから_imageView.frameをセットしないと、同じZoomableImageViewを再利用した時にglitchが発生します。
+	_imageView.frame = [self imageAspectFitRect];
+}
+
 
 - (void)_updateImageViewOrigin{
 	if( !_image ){
