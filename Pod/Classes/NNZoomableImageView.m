@@ -12,6 +12,7 @@
 	UIImageView* _imageView;
 	BOOL _rotating;
 	UITapGestureRecognizer* _doubleTap_gr;
+	//	BOOL _hasEverZoomed;/// imageが変更されてから1度でもズームしたか？ name confirmed by dc
 }
 
 
@@ -92,7 +93,6 @@
 	return _imageView;
 }
 - (void)scrollViewDidZoom:(UIScrollView*)scrollView{
-	// Update image view origin
 	[self _updateImageViewOrigin];
 }
 
@@ -135,8 +135,9 @@
 
 
 - (void)_updateImageViewSize{
-	self.zoomScale = 1;/// 先にzoomScaleをリセットしてから_imageView.frameをセットしないと、同じZoomableImageViewを再利用した時にglitchが発生します。
+	self.zoomScale = self.minimumZoomScale;/// 先にzoomScaleをリセットしてから_imageView.frameをセットしないと、同じZoomableImageViewを再利用した時にglitchが発生します。
 	_imageView.frame = [self imageAspectFitRect];
+	self.zoomScale = self.minimumZoomScale;/// もう一度ここでzoomScaleを設定しないと、スクロールが効かなくなることがあります
 }
 
 
