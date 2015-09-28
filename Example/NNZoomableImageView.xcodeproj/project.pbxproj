@@ -22,8 +22,8 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
-		D25667780231FDE631B1BCCB /* libPods-NNZoomableImageView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8E88C1504C30119742CE8E /* libPods-NNZoomableImageView.a */; };
-		E2FC4B033BC2F007F86A5248 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D77940B0040E96B4059583BB /* libPods-Tests.a */; };
+		73DE8884225E9875373F510C /* libPods-NNZoomableImageView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2430115CF46F40D15F85AAE8 /* libPods-NNZoomableImageView.a */; };
+		E42BA326EEA5FADAED60C531 /* libPods-Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FA1643C8B4C7A9EB96740C /* libPods-Tests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2430115CF46F40D15F85AAE8 /* libPods-NNZoomableImageView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NNZoomableImageView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		24FA1643C8B4C7A9EB96740C /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47009A44F3A814E8F1E390CA /* Pods-NNZoomableImageView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NNZoomableImageView.release.xcconfig"; path = "Pods/Target Support Files/Pods-NNZoomableImageView/Pods-NNZoomableImageView.release.xcconfig"; sourceTree = "<group>"; };
 		4D1D8C131AAE8CE300A7A18B /* wallabi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallabi.jpg; sourceTree = "<group>"; };
 		5D16F567CBA9E0F2A8A13A4A /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -62,10 +64,8 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		790E7700385EA826D789D22D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		7EEA54E47F49646E52346D52 /* NNZoomableImageView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NNZoomableImageView.podspec; path = ../NNZoomableImageView.podspec; sourceTree = "<group>"; };
-		8A8E88C1504C30119742CE8E /* libPods-NNZoomableImageView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NNZoomableImageView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9F18259E313B5DD81772F8C /* Pods-NNZoomableImageView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NNZoomableImageView.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NNZoomableImageView/Pods-NNZoomableImageView.debug.xcconfig"; sourceTree = "<group>"; };
 		B836E8A53409BB9F311C7237 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		D77940B0040E96B4059583BB /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB032AE9C218EAE858435149 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +77,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				D25667780231FDE631B1BCCB /* libPods-NNZoomableImageView.a in Frameworks */,
+				73DE8884225E9875373F510C /* libPods-NNZoomableImageView.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,7 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				E2FC4B033BC2F007F86A5248 /* libPods-Tests.a in Frameworks */,
+				E42BA326EEA5FADAED60C531 /* libPods-Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,8 +123,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				8A8E88C1504C30119742CE8E /* libPods-NNZoomableImageView.a */,
-				D77940B0040E96B4059583BB /* libPods-Tests.a */,
+				2430115CF46F40D15F85AAE8 /* libPods-NNZoomableImageView.a */,
+				24FA1643C8B4C7A9EB96740C /* libPods-Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
