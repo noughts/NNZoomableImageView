@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "NNZoomableImageView"
-  s.version          = "1.3.0"
+  s.version          = "1.3.1"
   s.summary          = "hoge"
   s.description      = <<-DESC
                        fuga
