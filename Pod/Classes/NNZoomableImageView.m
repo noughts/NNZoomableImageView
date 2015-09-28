@@ -5,14 +5,14 @@
  */
 
 #import "NNZoomableImageView.h"
-#import <NBULog.h>
-#import <FBKVOController.h>
+#import "NBULog.h"
 
 @implementation NNZoomableImageView{
 	UIImageView* _imageView;
 	BOOL _rotating;
 	UITapGestureRecognizer* _doubleTap_gr;
 	//	BOOL _hasEverZoomed;/// imageが変更されてから1度でもズームしたか？ name confirmed by dc
+	BOOL _zoomInStarted;
 }
 
 
@@ -94,6 +94,20 @@
 }
 - (void)scrollViewDidZoom:(UIScrollView*)scrollView{
 	[self _updateImageViewOrigin];
+	
+	if( scrollView.zoomScale > self.minimumZoomScale ){
+		if( !_zoomInStarted ){
+			_zoomInStarted = YES;
+			NBULogVerbose(@"ズーム開始");
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"zoomInStarted" object:self];
+		}
+	} else {
+		if( _zoomInStarted ){
+			_zoomInStarted = NO;
+			NBULogVerbose(@"ズーム終了");
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"zoomInFinished" object:self];
+		}
+	}
 }
 
 
